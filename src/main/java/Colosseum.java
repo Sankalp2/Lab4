@@ -90,7 +90,13 @@ public class Colosseum {
      * Implement this function.
      */
     public static void printWhoIsAhead() {
-        System.out.println("Implement me!");
+        if (firstPokemon.hitPoints > secondPokemon.hitPoints) {
+            System.out.println(firstPokemon.name + " is currently ahead!");
+        } else if (firstPokemon.hitPoints > secondPokemon.hitPoints) {
+            System.out.println(secondPokemon.name + " is currently ahead!");
+        } else {
+            System.out.println("It is currently a tie!");
+        }
     }
 
     /**
@@ -101,7 +107,11 @@ public class Colosseum {
      * Write this function.
      */
     public static void determineWinner() {
-        System.out.println("Implement me!");
+        if (firstPokemon.hitPoints > secondPokemon.hitPoints) {
+            System.out.println(firstPokemon.name + " wins!");
+        } else {
+            System.out.println(secondPokemon.name + " wins!");
+        }
     }
 
     /**
@@ -112,15 +122,55 @@ public class Colosseum {
     public static void initializePokemon() {
         System.out.println("Player 1, build your Pokemon!");
         System.out.println("=================");
+        System.out.println("Player 1, please name your Pokemon!");
+        String name = myScan.next();
+        int hp = 0;
+        while (hp < 1 || hp > 50) {
+            System.out.println("How many hitpoints will it have?");
+            hp = myScan.nextInt();
+        }
+        int atk = 0;
+        while (atk < 1 || atk > 49) {
+            System.out.println("How many attack points will it have?");
+            atk = myScan.nextInt();
+        }
+        int df = 0;
+        while (df < 1 || df > 3) {
+            System.out.println("How much defense will it have?");
+            df = myScan.nextInt();
+        }
         firstPokemon = buildPokemon();
-        firstPokemon.name = "Chuchu";
+        firstPokemon.name = name;
+        firstPokemon.attackLevel = atk;
+        firstPokemon.hitPoints = hp;
+        firstPokemon.defenseLevel = df;
 
         System.out.println("");
 
         System.out.println("Player 2, build your Pokemon!");
         System.out.println("==================");
+        System.out.println("Player 2, please name your Pokemon!");
+        name = myScan.next();
+        hp = 0;
+        while (hp < 1 || hp > 50) {
+            System.out.println("How many hitpoints will it have?");
+            hp = myScan.nextInt();
+        }
+        atk = 0;
+        while (atk < 1 || atk > 49) {
+            System.out.println("How many attack points will it have?");
+            atk = myScan.nextInt();
+        }
+        df = 0;
+        while (df < 1 || df > 3) {
+            System.out.println("How much defense will it have?");
+            df = myScan.nextInt();
+        }
         secondPokemon = buildPokemon();
-        secondPokemon.name = "Xyz";
+        secondPokemon.name = name;
+        secondPokemon.attackLevel = atk;
+        secondPokemon.defenseLevel = df;
+        secondPokemon.hitPoints = hp;
     }
 
     /**
